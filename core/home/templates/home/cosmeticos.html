@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center mt-1">
+        <div class="col-md-12 col-sm-12 p-4">
+            {% csrf_token %}
+            <div class="pt-5">
+                {% for cosmetico in cosmeticos %}
+                <div class="row mt-4">
+                    <div class="col-md-2 col-sm-12">
+                        <img class="rounded" src="{{ cosmetico.image.url }}" width="150" height="100"/>
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="d-flex flex-row">
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="items[]" class="form-check-input" value="{{ cosmetico.pk }}">
+                                <label class="form-check-label"> {{ cosmetico.name }}</label>
+                            </div>
+                            <p class="font-weight-bold pl-5">{{ cosmetico.price }}</p>
+                        </div>
+                        <p>{{ cosmetico.description }}</p>
+                    </div>
+                </div>
+                <hr />
+                {% endfor %}
+            </div>      
+        </div>
+    </div>
+</div>  
+
+{% endblock content %}
