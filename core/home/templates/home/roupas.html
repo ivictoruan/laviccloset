@@ -4,8 +4,9 @@
 <div class="container mb-5">
     <div class="row justify-content-center mt-1">
         <div class="col-md-12 col-sm-12 p-4">
-            <div class="pt-5">
-                {% for roupa in roupas %}
+            <div class="pt-5">                
+            {% for roupa in roupas %}
+                {% if roupa.is_avaliable %}
                 <div class="row mt-4">
                     <div class="col-md-2 col-sm-12">
                         <img class="rounded" src="{{ roupa.image.url }}" width="150" height="100"/>
@@ -22,7 +23,8 @@
                     </div>
                 </div>
                 <hr />
-                {% endfor %}
+                {% endif %}
+            {% endfor %}
             </div>      
         </div>
     </div>
